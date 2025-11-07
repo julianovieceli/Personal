@@ -9,7 +9,7 @@ namespace Personal.Common.Infra.MongoDb.Repository.Repository
 {
     public class MongoDbRepositoryBase<TEntity> : IMongoDbRepositoryBase<TEntity> where TEntity : MongoDbEntityBase
     {
-        private readonly ILogger<TEntity> _logger;
+        protected readonly ILogger<TEntity> _logger;
         private readonly IMongoCollection<TEntity> _collection;
 
         public MongoDbRepositoryBase(IMongoDbcontext dbcontext, string collectionName, ILogger<TEntity> logger)
