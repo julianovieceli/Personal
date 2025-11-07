@@ -27,7 +27,7 @@ namespace Personal.Common.Infra.MongoDb.Repository.Repository
             catch(Exception e)
             {
                 _logger.LogError($"Erro ao inserir o documento : {e.Message}");
-                return false;
+                throw;
             }
         }
 
