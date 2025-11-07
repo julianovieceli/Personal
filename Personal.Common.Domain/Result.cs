@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Personal.Common;
+namespace Personal.Common.Domain;
 
 public class Result
 {

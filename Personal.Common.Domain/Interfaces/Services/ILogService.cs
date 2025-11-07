@@ -1,4 +1,4 @@
-﻿namespace Personal.Common.Services
+﻿namespace Personal.Common.Domain.Interfaces.Services
 {
     public interface ILogService
     {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Personal.Common.Domain;
 using Personal.Common.Domain.Interfaces;
+using Personal.Common.Domain.Interfaces.Services;
 using System.Text.Json;
 using static Personal.Common.Domain.Log;
 
