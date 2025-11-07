@@ -14,5 +14,7 @@ namespace Personal.Common.Infra.MongoDb.Repository.Interface
 
         Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> filter);
 
+        Task<long> CountAsync(Expression<Func<TEntity, bool>> filter);
+
     }
 }

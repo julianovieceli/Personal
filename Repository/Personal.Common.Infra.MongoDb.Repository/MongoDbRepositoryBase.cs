@@ -10,7 +10,7 @@ namespace Personal.Common.Infra.MongoDb.Repository
     public class MongoDbRepositoryBase<TEntity> : IMongoDbRepositoryBase<TEntity> where TEntity : MongoDbEntityBase
     {
         protected readonly ILogger<TEntity> _logger;
-        private readonly IMongoCollection<TEntity> _collection;
+        protected readonly IMongoCollection<TEntity> _collection;
 
         public MongoDbRepositoryBase(IMongoDbcontext dbcontext, string collectionName, ILogger<TEntity> logger)
         {
@@ -71,5 +71,21 @@ namespace Personal.Common.Infra.MongoDb.Repository
                 throw;
             }
         }
+
+        public async Task<long> CountAsync(Expression<Func<TEntity, bool>> filter)
+        {
+            try
+            {
+                return await _collection.CountDocumentsAsync(filter);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Erro ao buscar o documento. Exception : {e.Message}");
+                throw;
+            }
+        }
+
+
+
     }
 }
