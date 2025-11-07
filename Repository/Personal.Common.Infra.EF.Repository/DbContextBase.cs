@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Personal.Common.Domain;
 
-namespace Personal.Common.EF.Repository
+namespace Personal.Common.Infra.EF.Repository
 {
     public class DbContextBase : DbContext
     {

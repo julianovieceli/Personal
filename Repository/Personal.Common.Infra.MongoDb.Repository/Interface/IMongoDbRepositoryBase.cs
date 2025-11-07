@@ -1,7 +1,8 @@
 ﻿using MongoDB.Bson;
+using Personal.Common.Infra.MongoDb.Repository.Repository;
 using System.Linq.Expressions;
 
-namespace Personal.Common.MongoDb.Repository.Interface
+namespace Personal.Common.Infra.MongoDb.Repository.Interface
 {
     public interface IMongoDbRepositoryBase<TEntity> where TEntity : MongoDbEntityBase
     {

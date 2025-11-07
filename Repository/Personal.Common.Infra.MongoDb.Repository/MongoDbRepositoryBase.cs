@@ -1,10 +1,10 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using Personal.Common.MongoDb.Repository.Interface;
-using Personal.Common.MongoDb.Repository.Interfaces;
+using Personal.Common.Infra.MongoDb.Repository.Interface;
+using Personal.Common.Infra.MongoDb.Repository.Interfaces;
 using System.Linq.Expressions;
 
-namespace Personal.Common.MongoDb.Repository
+namespace Personal.Common.Infra.MongoDb.Repository.Repository
 {
     public class MongoDbRepositoryBase<TEntity> : IMongoDbRepositoryBase<TEntity> where TEntity : MongoDbEntityBase
     {

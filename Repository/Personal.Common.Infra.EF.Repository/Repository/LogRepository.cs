@@ -2,7 +2,7 @@
 using Personal.Common.Domain;
 using Personal.Common.Domain.Interfaces;
 
-namespace Personal.Common.EF.Repository
+namespace Personal.Common.Infra.EF.Repository
 {
     public class LogRepository : ILogRepository
     {

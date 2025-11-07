@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 
-namespace Personal.Common.MongoDb.Repository
+namespace Personal.Common.Infra.MongoDb.Repository.Repository
 {
     public abstract class MongoDbEntityBase
     {

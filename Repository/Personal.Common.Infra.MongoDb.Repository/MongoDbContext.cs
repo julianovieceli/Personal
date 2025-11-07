@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
-using Personal.Common.MongoDb.Repository.Interfaces;
+using Personal.Common.Infra.MongoDb.Repository.Interfaces;
 
-namespace Personal.Common.MongoDb.Repository
+namespace Personal.Common.Infra.MongoDb.Repository.Repository
 {
     public class MongoDbContext: IMongoDbcontext
     {
