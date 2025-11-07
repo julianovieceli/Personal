@@ -7,14 +7,12 @@ using static Personal.Common.Domain.Log;
 
 namespace Personal.Common.Services
 {
-    public class LogService: ILogService
+    public class LogService: BaseService, ILogService
     {
-        protected ILogger<LogService> _logger;
-     
+        
         private readonly ILogRepository _logRepository;
-        public LogService(ILogger<LogService> logger, ILogRepository logRepository)
+        public LogService(ILogger<LogService> logger, ILogRepository logRepository): base(logger)
         {
-            _logger = logger;
             _logRepository = logRepository;
         }
 

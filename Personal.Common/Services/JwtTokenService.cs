@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Personal.Common.Domain;
 using Personal.Common.Domain.Interfaces.Services;
@@ -9,11 +10,11 @@ using System.Text;
 
 namespace Personal.Common.Services
 {
-    public class JwtTokenService : ITokenService
+    public class JwtTokenService : BaseService, ITokenService
     {
         private readonly JwtSettings _jwtSettings;
 
-        public JwtTokenService(IOptions<JwtSettings> jwtSettings)
+        public JwtTokenService(IOptions<JwtSettings> jwtSettings, ILogger<JwtTokenService> logger): base(logger)
         {
             _jwtSettings = jwtSettings.Value;
         }
@@ -50,10 +51,13 @@ namespace Personal.Common.Services
                 var token = handler.CreateToken(tokenDescriptor);
                 var jwt = handler.WriteToken(token);
 
+                _logger.LogInformation("Token gerado com sucesso!");
+
                 return Result<string>.Success(jwt);
             }
             catch(Exception e )
             {
+                _logger.LogError($"Erros ao gerar um Token! Exception :{e.Message}");
                 return Result.Failure("500", e.Message);
             }
         }
