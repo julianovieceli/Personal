@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.Extensions.Logging;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using Personal.Common.Infra.MongoDb.Repository.Interface;
 using Personal.Common.Infra.MongoDb.Repository.Interfaces;
@@ -8,12 +9,13 @@ namespace Personal.Common.Infra.MongoDb.Repository.Repository
 {
     public class MongoDbRepositoryBase<TEntity> : IMongoDbRepositoryBase<TEntity> where TEntity : MongoDbEntityBase
     {
-
+        private readonly ILogger<TEntity> _logger;
         private readonly IMongoCollection<TEntity> _collection;
 
-        public MongoDbRepositoryBase(IMongoDbcontext dbcontext, string collectionName)
+        public MongoDbRepositoryBase(IMongoDbcontext dbcontext, string collectionName, ILogger<TEntity> logger)
         {
             _collection = dbcontext.DataBase.GetCollection<TEntity>(collectionName);
+            _logger = logger;
         }
         public async Task<bool> InsertAsync(TEntity mongoDbEntityBase)
         {
@@ -22,8 +24,9 @@ namespace Personal.Common.Infra.MongoDb.Repository.Repository
                 await _collection.InsertOneAsync(mongoDbEntityBase);
                 return true;
             }
-            catch
+            catch(Exception e)
             {
+                _logger.LogError($"Erro ao inserir o documento : {e.Message}");
                 return false;
             }
         }
@@ -34,11 +37,10 @@ namespace Personal.Common.Infra.MongoDb.Repository.Repository
             {
                 return await _collection.Find(e => e.Id == id).FirstOrDefaultAsync();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                {
-                    throw;
-                }
+                _logger.LogError($"Erro ao buscar o documento {id} :Exception : {e.Message}");
+                throw;
             }
 
         }
@@ -49,11 +51,10 @@ namespace Personal.Common.Infra.MongoDb.Repository.Repository
             {
                 return await _collection.Find(_ => true).ToListAsync();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                {
-                    throw;
-                }
+                _logger.LogError($"Erro ao buscar todos os o documentos: Exception :{e.Message}");
+                throw;
             }
         }
 
@@ -64,11 +65,10 @@ namespace Personal.Common.Infra.MongoDb.Repository.Repository
             {
                 return await _collection.Find(filter).FirstOrDefaultAsync();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                {
-                    throw;
-                }
+                _logger.LogError($"Erro ao buscar o documento. Exception : {e.Message}");
+                throw;
             }
         }
     }
