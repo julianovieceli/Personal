@@ -1,5 +1,4 @@
 ﻿using MongoDB.Bson;
-using Personal.Common.Infra.MongoDb.Repository.Repository;
 using System.Linq.Expressions;
 
 namespace Personal.Common.Infra.MongoDb.Repository.Interface

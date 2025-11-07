@@ -5,7 +5,7 @@ using Personal.Common.Infra.MongoDb.Repository.Interface;
 using Personal.Common.Infra.MongoDb.Repository.Interfaces;
 using System.Linq.Expressions;
 
-namespace Personal.Common.Infra.MongoDb.Repository.Repository
+namespace Personal.Common.Infra.MongoDb.Repository
 {
     public class MongoDbRepositoryBase<TEntity> : IMongoDbRepositoryBase<TEntity> where TEntity : MongoDbEntityBase
     {

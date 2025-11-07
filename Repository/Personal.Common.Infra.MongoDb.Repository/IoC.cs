@@ -3,7 +3,7 @@ using Personal.Common.Infra.MongoDb.Repository.Interfaces;
 
 
 
-namespace Personal.Common.Infra.MongoDb.Repository.Repository
+namespace Personal.Common.Infra.MongoDb.Repository
 {
     public static class Ioc
     {
