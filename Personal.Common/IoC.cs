@@ -28,6 +28,18 @@ namespace Personal.Common
 
             services.AddAuthorizationCore();
 
+            
+
+
+            return services;
+        }
+
+
+        public static IServiceCollection AddJwtTokenConfigurations(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
+
+            services.AddScoped<ITokenService, JwtTokenService>();
 
             return services;
         }
