@@ -12,7 +12,9 @@ namespace Personal.Common.Infra.MongoDb.Repository.Interface
         Task<IList<TEntity>> GetAllAsync();
 
 
-        Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> filter);
+        Task<TEntity> FindOneAsync(Expression<Func<TEntity, bool>> filter);
+
+        Task<IList<TEntity>> FindAsync(Expression<Func<TEntity, bool>> filter);
 
         Task<long> CountAsync(Expression<Func<TEntity, bool>> filter);
 

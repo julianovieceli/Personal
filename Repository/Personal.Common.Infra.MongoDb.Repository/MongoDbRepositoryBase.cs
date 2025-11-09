@@ -59,7 +59,7 @@ namespace Personal.Common.Infra.MongoDb.Repository
         }
 
 
-        public async Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> filter)
+        public async Task<TEntity> FindOneAsync(Expression<Func<TEntity, bool>> filter)
         {
             try
             {
@@ -68,6 +68,19 @@ namespace Personal.Common.Infra.MongoDb.Repository
             catch (Exception e)
             {
                 _logger.LogError($"Erro ao buscar o documento. Exception : {e.Message}");
+                throw;
+            }
+        }
+
+        public async Task<IList<TEntity>> FindAsync(Expression<Func<TEntity, bool>> filter)
+        {
+            try
+            {
+                return await _collection.Find(filter).ToListAsync();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Erro ao buscar os documentos. Exception : {e.Message}");
                 throw;
             }
         }
