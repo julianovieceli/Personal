@@ -4,6 +4,7 @@ namespace Personal.Common.Infra.MongoDb.Repository
 {
     public abstract class MongoDbEntityBase
     {
-        public ObjectId Id { get; set; }
+        
+        public virtual ObjectId Id { get; set; }
     }
 }
