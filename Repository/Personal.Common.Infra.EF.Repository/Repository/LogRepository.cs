@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Personal.Common.Domain;
-using Personal.Common.Domain.Interfaces;
+using Personal.Common.Domain.Interfaces.Repository;
 
 namespace Personal.Common.Infra.EF.Repository
 {

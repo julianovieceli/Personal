@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Personal.Common.Domain.Interfaces;
+using Personal.Common.Domain.Interfaces.Repository;
 
 namespace Personal.Common.Infra.EF.Repository
 {

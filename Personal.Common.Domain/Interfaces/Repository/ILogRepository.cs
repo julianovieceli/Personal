@@ -1,4 +1,4 @@
-﻿namespace Personal.Common.Domain.Interfaces
+﻿namespace Personal.Common.Domain.Interfaces.Repository
 {
     public interface ILogRepository
     {
