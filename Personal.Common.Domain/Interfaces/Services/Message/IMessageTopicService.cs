@@ -2,6 +2,6 @@
 {
     public interface IMessageTopicService
     {
-        Task PublishMessageAsync(string topic, string msg);
+        Task PublishMessageAsync<T>(string topic, T msg);
     }
 }

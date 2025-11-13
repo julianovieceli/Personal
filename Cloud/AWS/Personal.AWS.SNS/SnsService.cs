@@ -1,8 +1,10 @@
 ﻿using Amazon.SimpleNotificationService;
 using Amazon.SimpleNotificationService.Model;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Personal.Common.Domain.Interfaces.Services.Message;
 using Personal.Common.Services;
+using System.Text.Json;
 
 namespace Personal.AWS.SNS
 {
@@ -14,15 +16,17 @@ namespace Personal.AWS.SNS
             _snsClient = snsClient; 
 
         }
-        public async Task PublishMessageAsync(string topic, string msg)
+        public async Task PublishMessageAsync<T>(string topic, T msg)
         {
 
             try
             {
+                var messagePayload = JsonSerializer.Serialize(msg);
+
                 var publishRequest = new PublishRequest
                 {
                     TopicArn = topic,
-                    Message = msg
+                    Message = messagePayload
                 };
 
                 var response = await _snsClient.PublishAsync(publishRequest);
